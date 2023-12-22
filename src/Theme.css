@@ -68,9 +68,19 @@ p {
     color: var(--dark-orange);
 }
 
-.Profile_profileWrapper__x6XH5::after {
+.Profile_profileWrapper__x6XH5::after,
+.Profile_profileWrapper__sNPgw:after,
+:where(.css-p7e5j5).ant-menu-light.ant-menu-root.ant-menu-inline, :where(.css-p7e5j5).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-inline, :where(.css-p7e5j5).ant-menu-light.ant-menu-root.ant-menu-vertical, :where(.css-p7e5j5).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-vertical,
+.hoc_createCrudHocWrapper__Pqf3o,
+.RadioGroup_group__4HyRR,
+.FormCreateCrud_formDiv__gxPNV,
+:where(.css-p7e5j5).ant-table-wrapper .ant-table-thead >tr>th, :where(.css-p7e5j5).ant-table-wrapper .ant-table-thead >tr>td
+{
     background-color: var(--dark--black);
+    color: var(--dark-orange);
 }
+
+.Profile_profileWrapper__sNPgw:after
 
 .ant-avatar.ant-avatar-square.ant-avatar-icon.css-dev-only-do-not-override-p7e5j5 {
     background-color: var(--dark-gray);
