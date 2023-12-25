@@ -1,7 +1,6 @@
 import AntdButton from "./components/AntdButton/AntdButton";
-import {Input} from "antd";
+import { Button, Input } from "antd";
 import React from "react";
-
 
 export const EDIT_PROFILE_INPUTS_CONST = [
   {
@@ -20,13 +19,7 @@ export const EDIT_PROFILE_INPUTS_CONST = [
 
 export const radioButton = ["true", "false", "reset"];
 
-export const generateColumns = (
-  deleteTodoFunc,
-  doneTodoFunc,
-  editTodoFunc,
-  value,
-  imageTodoFunc
-) => {
+export const generateColumns = (handleId, value) => {
   const { t } = value;
   let columns = [
     {
@@ -39,7 +32,9 @@ export const generateColumns = (
     },
     {
       title: "Image",
-      render: (record) => <img style={{width:"100%"}} src={record.imageUrl} alt="" />,
+      render: (record) => (
+        <img style={{ width: "100%" }} src={record.imageUrl} alt="" />
+      ),
     },
     {
       title: "CreatedAt",
@@ -58,24 +53,25 @@ export const generateColumns = (
       title: "Buttons",
       render: (_id) => (
         <>
-          <AntdButton
-            func={() => {
-              editTodoFunc(_id);
-            }}
-            htmlType="text"
-            text={t("Edit")}
-          />
-          <AntdButton
-            func={() => deleteTodoFunc(_id)}
-            htmlType="text"
-            text={t("Delete")}
-          />
-          <AntdButton
-            func={() => doneTodoFunc(_id)}
-            htmlType="text"
-            text={t("Done")}
-          />
-          <Input type="file" id="fileInput" onChange={imageTodoFunc} />
+          <Button onClick={() => handleId(_id)}>Edit crud</Button>
+          {/*<AntdButton*/}
+          {/*  func={() => {*/}
+          {/*    editTodoFunc(_id);*/}
+          {/*  }}*/}
+          {/*  htmlType="text"*/}
+          {/*  text={t("Edit")}*/}
+          {/*/>*/}
+          {/*<AntdButton*/}
+          {/*  func={() => deleteTodoFunc(_id)}*/}
+          {/*  htmlType="text"*/}
+          {/*  text={t("Delete")}*/}
+          {/*/>*/}
+          {/*<AntdButton*/}
+          {/*  func={() => doneTodoFunc(_id)}*/}
+          {/*  htmlType="text"*/}
+          {/*  text={t("Done")}*/}
+          {/*/>*/}
+          {/*<Input type="file" id="fileInput" onChange={imageTodoFunc} />*/}
         </>
       ),
     },

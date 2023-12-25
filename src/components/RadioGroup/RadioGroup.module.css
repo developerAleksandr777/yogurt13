@@ -1,5 +1,7 @@
 .group {
     border: 1px solid rgb(217, 217, 217);
-    border-radius: 20px;
+backdrop-filter: blur(1px);
+        background-color: rgba(115, 112, 112, 0.1);
+     border-radius: 20px;
     padding: 8px;
 }

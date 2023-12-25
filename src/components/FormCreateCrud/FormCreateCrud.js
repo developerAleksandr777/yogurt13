@@ -5,7 +5,13 @@ import AntdButton from "../AntdButton/AntdButton";
 import { todoFormCreate } from "../../constants";
 import { useTranslation } from "react-i18next";
 
-const FormCreateCrud = ({ handleSubmit, handleValues, values,handleFileChange }) => {
+const FormCreateCrud = ({
+  handleSubmit,
+  handleValues,
+  values,
+  handleFileChange,
+  handleOk,
+}) => {
   const { t } = useTranslation();
   const render = todoFormCreate.map((el, index) => {
     return (
@@ -25,9 +31,9 @@ const FormCreateCrud = ({ handleSubmit, handleValues, values,handleFileChange })
       <p>{t("Create CRUD")}</p>
       <form onSubmit={handleSubmit}>
         {render}
-          <Input type="file" id="fileInput" onChange={handleFileChange} />
+        <Input type="file" id="fileInput" onChange={handleFileChange} />
 
-          <AntdButton text={t("Send")} htmlType="submit" />
+        <AntdButton text={t("Send")} htmlType="submit" onClick={handleOk} />
       </form>
     </div>
   );

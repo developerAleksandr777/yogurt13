@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string()
     .matches(
       /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-      "Password must contain at least 1 symbol, 1 uppercase letter, 1 number"
+      "Password must contain at least 1 symbol, 1 uppercase letter, 1 number",
     )
     .min(7, "Password length must be between 7 and 15 symbols")
     .max(15, "Password length must be between 7 and 15 symbols")
@@ -65,7 +65,6 @@ const RegisterForm = () => {
         handleSubmit,
       }) => (
         <Form name="registration" onFinish={handleSubmit}>
-          <h2>{t("Register")}</h2>
           <Form.Item
             name="name"
             validateStatus={touched.name && errors.name ? "error" : ""}
@@ -122,8 +121,6 @@ const RegisterForm = () => {
             </Button>
           </Form.Item>
           <Translate />
-          <Switch checked={theme === "dark"} onChange={handleThemeChange} />
-          <Link to="/login">{t("Already have an account")}?</Link>
         </Form>
       )}
     </Formik>

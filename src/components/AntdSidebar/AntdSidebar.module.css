@@ -1,14 +1,5 @@
-.sidebar {
-    width: var(--sidebar-width);
-    height: 100vh;
-    overflow-y: auto;
-    position: fixed;
-    left: 0;
-    top: 0;
-    box-shadow: 2px 0 5px black;
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
+.search{
+    transform: translate(-50%,50%);
+    right: -50%;
+    bottom: -50%;
 }

@@ -1,0 +1,9 @@
+.footer{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(103, 99, 99, 0.63);
+    height: var(--footerHeight);
+    bottom: 0;
+    z-index: 2;
+}

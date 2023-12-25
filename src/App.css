@@ -8,8 +8,10 @@
 }
 
 :root {
-  --sidebar-width: 256px;
-  --sidebar-margin: 280px;
+  --headerHeight: 64px;
+  --footerHeight:75px;
+  --sidebar-width: 200px;
+  --sidebar-color: #2B2536;
 }
 
 .row {
@@ -19,4 +21,83 @@
 button {
   overflow: hidden;
   text-align: center;
+}
+
+a{
+  color: white !important;
+}
+
+:where(.css-dev-only-do-not-override-p7e5j5).ant-tabs .ant-tabs-tab{
+  color: rgb(192, 192, 192);
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-input-affix-wrapper{
+  background-color: #0F141F;
+  border:1px solid black;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-input-affix-wrapper >input.ant-input{
+  background-color: #0F141F;
+  color: rgb(192, 192, 192);
+
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-input-affix-wrapper svg{
+  color: rgb(192, 192, 192);
+}
+
+:where(.css-dev-only-do-not-override-p7e5j5).ant-input-affix-wrapper >input.ant-input::placeholder{
+  color: rgb(192, 192, 192);
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-form-item .ant-form-item-control-input-content button{
+  width: 100%;
+}
+
+.ant-dropdown-trigger{
+  color: rgb(192, 192, 192);
+  width: 100%;
+  text-align: center;
+}
+
+:where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-title-content, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-title-content{
+  color: rgb(192, 192, 192);
+  background-color: #0F141F;
+  width: 100%;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-title-content:hover, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-title-content{
+  background-color: black;
+  color: white;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-item, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-submenu-title, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-submenu-title{
+  background-color: #0F141F;
+}
+
+:where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown .ant-dropdown-menu, :where(.css-dev-only-do-not-override-p7e5j5).ant-dropdown-menu-submenu .ant-dropdown-menu{
+  background-color:  black;
+  box-shadow: 0 6px 16px 0 black, 0 3px 6px -4px black, 0 9px 28px 8px black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 20px;
+  text-align: center;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light, :where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light>.ant-menu{
+  background-color: var(--sidebar-color);
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-menu .ant-menu-item a::before{
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-p7e5j5).ant-menu .ant-menu-item span{
+  color: white;
+}
+.ant-menu-item.ant-menu-item-selected{
+  background-color: #4096FF;
+}
+.anticon.anticon-profile.ant-menu-item-icon
+{
+  color: white;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light .ant-menu-item a, :where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light>.ant-menu .ant-menu-item a, :where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light .ant-menu-item a:hover, :where(.css-dev-only-do-not-override-p7e5j5).ant-menu-light>.ant-menu .ant-menu-item a:hover{
+  color: white;
+}
+:where(.css-dev-only-do-not-override-p7e5j5).ant-radio-wrapper span.ant-radio+*{
+  color: white;
 }

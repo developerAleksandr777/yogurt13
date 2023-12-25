@@ -2,15 +2,17 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { AUTH_TOKEN_ACTION, AUTH_ERRORS_ACTION } from "../slicers/authSlice";
 import {
-    REGISTER_API,
-    LOGIN_API,
-    PROFILE_EDIT_API,
-    PROFILE_DELETE_API,
-    GET_CRUD_API,
-    CREATE_CRUD_API,
-    API, GET_PROFILE_API, CRUD_API,
+  REGISTER_API,
+  LOGIN_API,
+  PROFILE_EDIT_API,
+  PROFILE_DELETE_API,
+  GET_CRUD_API,
+  CREATE_CRUD_API,
+  API,
+  GET_PROFILE_API,
+  CRUD_API,
 } from "../../config";
-import {  GET_PROFILE_ACTION } from "../slicers/profileSlice";
+import { GET_PROFILE_ACTION } from "../slicers/profileSlice";
 import { CREATE_CRUD_ACTION, GET_CRUD_ACTION } from "../slicers/crudSlice";
 
 export const REGISTER_ASYNC = createAsyncThunk(
@@ -36,7 +38,7 @@ export const REGISTER_ASYNC = createAsyncThunk(
       dispatch(AUTH_ERRORS_ACTION(allErrors));
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const LOGIN_ASYNC = createAsyncThunk(
@@ -62,7 +64,7 @@ export const LOGIN_ASYNC = createAsyncThunk(
       dispatch(AUTH_ERRORS_ACTION(allErrors));
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const PROFILE_ASYNC = createAsyncThunk(
@@ -79,7 +81,7 @@ export const PROFILE_ASYNC = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const PROFILE_EDIT_ASYNC = createAsyncThunk(
@@ -113,7 +115,7 @@ export const PROFILE_EDIT_ASYNC = createAsyncThunk(
       dispatch(AUTH_ERRORS_ACTION(allErrors));
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const PROFILE_DELETE_ASYNC = createAsyncThunk(
@@ -131,7 +133,7 @@ export const PROFILE_DELETE_ASYNC = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 export const CRUD_ASYNC = createAsyncThunk(
   "crud/CRUD_ASYNC",
@@ -147,7 +149,7 @@ export const CRUD_ASYNC = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${auth}`,
           },
-        }
+        },
       );
 
       console.log(response.data.products);
@@ -155,7 +157,7 @@ export const CRUD_ASYNC = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const CREATE_CRUD_ASYNC = createAsyncThunk(
@@ -173,7 +175,7 @@ export const CREATE_CRUD_ASYNC = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const EDIT_CRUD_ASYNC = createAsyncThunk(
@@ -183,7 +185,7 @@ export const EDIT_CRUD_ASYNC = createAsyncThunk(
       const { auth } = getState().auth;
 
       const res = await axios.patch(
-          CRUD_API + `/${obj.crud._id}/title`,
+        CRUD_API + `/${obj.product._id}/title`,
         {
           title: obj.promptTitle,
           description: obj.promptDescr,
@@ -192,13 +194,13 @@ export const EDIT_CRUD_ASYNC = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${auth}`,
           },
-        }
+        },
       );
       return res.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const DONE_CRUD_ASYNC = createAsyncThunk(
@@ -216,7 +218,7 @@ export const DONE_CRUD_ASYNC = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const DELETE_CRUD_ASYNC = createAsyncThunk(
@@ -225,7 +227,7 @@ export const DELETE_CRUD_ASYNC = createAsyncThunk(
     try {
       const { auth } = getState().auth;
 
-      const res = await axios.delete( CRUD_API+ `${id}/delete`, {
+      const res = await axios.delete(CRUD_API + `${id}/delete`, {
         headers: {
           Authorization: `Bearer ${auth}`,
         },
@@ -234,23 +236,23 @@ export const DELETE_CRUD_ASYNC = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const IMAGE_CRUD_ASYNC = createAsyncThunk(
-    "crud/IMAGE_CRUD_ASYNC",
-    async (id, { rejectWithValue, dispatch, getState }) => {
-        try {
-            const { auth } = getState().auth;
+  "crud/IMAGE_CRUD_ASYNC",
+  async (id, { rejectWithValue, dispatch, getState }) => {
+    try {
+      const { auth } = getState().auth;
 
-            const res = await axios.patch( CRUD_API+ `${id}/image`, {
-                headers: {
-                    Authorization: `Bearer ${auth}`,
-                },
-            });
-            return res.data;
-        } catch (e) {
-            return rejectWithValue(e.message);
-        }
+      const res = await axios.patch(CRUD_API + `${id}/image`, {
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      });
+      return res.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
     }
+  },
 );

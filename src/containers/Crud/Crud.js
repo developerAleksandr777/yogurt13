@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Input, Table } from "antd";
+import { Button, Flex, Input, Layout, Modal, Table } from "antd";
 import { usePageState } from "../../custom hook/usePageState";
 import { useSelector, useDispatch } from "react-redux";
-import AntdInput from "../../components/AntdInput/AntdInput";
 import {
   CRUD_ASYNC,
   DELETE_CRUD_ASYNC,
   DONE_CRUD_ASYNC,
   EDIT_CRUD_ASYNC,
-  CREATE_CRUD_ASYNC, PROFILE_EDIT_ASYNC, IMAGE_CRUD_ASYNC,
+  CREATE_CRUD_ASYNC,
+  IMAGE_CRUD_ASYNC,
 } from "../../redux/actions/actions";
 import { generateColumns } from "../../constants";
 import FormCreateCrud from "../../components/FormCreateCrud/FormCreateCrud";
@@ -17,8 +17,16 @@ import s from "./Crud.module.css";
 import { useTranslation } from "react-i18next";
 import AntdAlert from "../../components/AntdAlert/AntdAlert";
 import CreateCrudHocWrapper from "../../hoc/CreateCrudHocWrapper";
+import AntdModalCrud from "../../components/AntdModalCrud/AntdModalCrud";
+import AntdModalEditCrud from "../../components/AntdModalEditCrud/AntdModalEditCrud";
+import AntdHeader from "../../components/AntdHeader/AntdHeader";
+import AntdFooter from "../../components/AntdFooter/AntdFooter";
+import AntdSidebar from "../../components/AntdSidebar/AntdSidebar";
 
 const Crud = () => {
+  const { Content } = Layout;
+
+  const [product, setProduct] = useState({});
   const { t } = useTranslation();
   const [alertMessage, setAlertMessage] = useState(null);
   const [refresh, setRefresh] = useState({
@@ -38,7 +46,7 @@ const Crud = () => {
       CRUD_ASYNC({
         search,
         status,
-      })
+      }),
     );
   }, [dispatch, search, status, refresh]);
 
@@ -91,8 +99,6 @@ const Crud = () => {
     formData.append("descr", values.descr);
     dispatch(CREATE_CRUD_ASYNC(formData));
 
-
-
     setRefresh((prev) => ({ ...prev, createCrud: !prev.createCrud }));
     setValues({
       title: "",
@@ -100,83 +106,120 @@ const Crud = () => {
     });
   };
 
-  const editCrudFunc = (crud) => {
+  const editCrudFunc = () => {
     const promptTitle = prompt("Edit title");
     const promptDescr = prompt("Edit description");
     const obj = {
       promptTitle,
       promptDescr,
-      crud,
+      product,
     };
     setRefresh((prev) => ({ ...prev, editCrud: !prev.editCrud }));
     dispatch(EDIT_CRUD_ASYNC(obj));
   };
 
-  const deleteTodoFunc = (crud) => {
+  const deleteCrudFunc = () => {
     setRefresh((prev) => ({ ...prev, deleteCrud: !prev.deleteCrud }));
-    dispatch(DELETE_CRUD_ASYNC(crud._id));
+    dispatch(DELETE_CRUD_ASYNC(product._id));
   };
 
-  const doneTodoFunc = (crud) => {
+  const doneCrudFunc = (crud) => {
     setRefresh((prev) => ({ ...prev, doneCrud: !prev.doneCrud }));
-    dispatch(DONE_CRUD_ASYNC(crud._id));
+    dispatch(DONE_CRUD_ASYNC(product._id));
   };
 
-
-  const imageTodoFunc = (crud, e) => {
-    console.log(crud)
-    setFile(e?.target.files[0]);
-    const formData = new FormData();
-    formData.append("image", file);
-    dispatch(IMAGE_CRUD_ASYNC(crud._id, formData));
+  const [modalCrud, setModalCrud] = useState(false);
+  const [editModalCrud, setEditModalCrud] = useState(false);
+  const showModal = () => {
+    setModalCrud(true);
   };
-  console.log(file);
+  const handleOk = () => {
+    setModalCrud(false);
+  };
+  const handleCancel = () => {
+    setModalCrud(false);
+  };
+
+  const cancelModalCrud = () => {
+    setEditModalCrud(false);
+  };
+
+  const handleId = (crud) => {
+    console.log(crud.userId);
+    setProduct(crud);
+    setEditModalCrud(true);
+  };
+
+  const layoutStyle = {
+    height: "100vh",
+  };
 
   return (
-    <div>
-      <div className={s.crud}>
-        <h1>Crud</h1>
-        <CreateCrudHocWrapper>
-          <RadioGroup
-            handleChange={(e) => handleChange(e.target.value)}
-            value={status}
-          />
-          <Input
-            onChange={(e) => {
-              setPaginationState({ search: e.target.value, page: 1 });
-            }}
-            value={paginationState.search}
-            placeholder={t("Search by title")}
-          />
+    <Flex gap="middle" wrap="wrap">
+      <Layout style={layoutStyle}>
+        <AntdHeader title="Abmin" />
+        <Layout>
+          <Content className={s.content}>
+            <RadioGroup
+              handleChange={(e) => handleChange(e.target.value)}
+              value={status}
+            />
 
-          <FormCreateCrud
+            <Button type="primary" onClick={showModal}>
+              Create crud
+            </Button>
+
+            <AntdModalCrud
+              modalCrud={modalCrud}
+              handleOk={handleOk}
+              handleCancel={handleCancel}
+              handleSubmit={handleSubmit}
               handleFileChange={handleFileChange}
-            handleSubmit={handleSubmit}
-            handleValues={handleValues}
-            values={values}
-          />
-        </CreateCrudHocWrapper>
+              handleValues={handleValues}
+              values={values}
+            />
 
-        <Table
-          key={refresh}
-          dataSource={crud}
-          columns={generateColumns(deleteTodoFunc, doneTodoFunc, editCrudFunc, {
-            t,
-          },imageTodoFunc)}
-          rowKey="id"
-          pagination={{
-            pageSize,
-            onShowSizeChange: handlePaginationChange,
-            current: page,
-            onChange: handlePaginationChange,
-            pageSizeOptions: ["4", "8", "12", "16"],
-            showSizeChanger: true,
-          }}
-          scroll={{ y: 400 }}
-        />
-      </div>
-      {alertMessage && <AntdAlert message={alertMessage} />}
-    </div>
+            <AntdModalEditCrud
+              openModalCrud={editModalCrud}
+              cancelModalCrud={cancelModalCrud}
+              editCrudFunc={editCrudFunc}
+              deleteCrudFunc={deleteCrudFunc}
+              doneCrudFunc={doneCrudFunc}
+            />
+
+            <Table
+              key={refresh}
+              dataSource={crud}
+              columns={generateColumns(handleId, { t })}
+              rowKey="id"
+              pagination={
+                crud.length >= pageSize
+                  ? {
+                      total: crud.length,
+                      pageSize,
+                      onShowSizeChange: handlePaginationChange,
+                      current: page,
+                      onChange: handlePaginationChange,
+                      pageSizeOptions: ["4", "8", "12", "16"],
+                      showSizeChanger: true,
+                      showTotal: (total, range) =>
+                        `${range[0]}-${range[1]} из ${total} записей`,
+                    }
+                  : false // Отключение пагинации, если данных недостаточно
+              }
+              scroll={{ y: 400 }}
+            />
+            {alertMessage && <AntdAlert message={alertMessage} />}
+          </Content>
+
+          <AntdSidebar
+            paginationState={paginationState}
+            setPaginationState={setPaginationState}
+          />
+        </Layout>
+        <AntdFooter />
+      </Layout>
+    </Flex>
   );
 };
 

@@ -1,3 +1,9 @@
-.crud {
-    margin-left: var(--sidebar-margin);
+.content{
+    background-image: url("https://images.unsplash.com/photo-1604423203943-54721eff418a?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top:  var(--headerHeight);
+    margin-bottom: var(--footerHeight);
+    margin-right: var(--sidebar-width);
+    padding: 40px;
 }

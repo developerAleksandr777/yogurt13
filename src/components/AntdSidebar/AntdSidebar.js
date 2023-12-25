@@ -1,49 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./AntdSidebar.module.css";
-import { Menu, Switch } from "antd";
-import {
-  ProfileOutlined,
-  PartitionOutlined,
-  CoffeeOutlined,
-} from "@ant-design/icons";
+import { Input, Menu } from "antd";
+import { ProfileOutlined, PartitionOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../custom hook/useTheme";
-import Translate from "../Translate/Translate";
 import { useTranslation } from "react-i18next";
+import { Layout } from "antd";
 
-const AntdSidebar = () => {
-  const { theme, setTheme } = useTheme();
+const AntdSidebar = ({ setPaginationState, paginationState }) => {
+  const { Sider } = Layout;
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("1");
 
-  const handleThemeChange = (checked) => {
-    const newTheme = checked ? "dark" : "light";
-    setTheme(newTheme);
-  };
   const { t } = useTranslation();
   const menuItems = [
     { key: "1", icon: <ProfileOutlined />, link: "/", label: "Profile" },
     { key: "2", icon: <PartitionOutlined />, link: "/crud", label: "Crud CRM" },
-    {
-      key: "3",
-      icon: <CoffeeOutlined />,
-      link: "/cocktail",
-      label: "Cocktail",
-    },
   ];
 
-  const render = menuItems.map((item) => {
-    return (
-      <Menu.Item key={item.key} icon={item.icon}>
-        <Link to={item.link}>{t(item.label)}</Link>
-      </Menu.Item>
-    );
-  });
+  const handleMenuClick = (item) => {
+    setNumber((prevNumber) => item.key);
+    setName((prevName) => item.label);
+  };
+  const render = menuItems.map((item) => (
+    <Menu.Item
+      key={item.key}
+      icon={item.icon}
+      onDoubleClick={() => handleMenuClick(item)}
+    >
+      <Link to={item.link}>{t(item.label)}</Link>
+    </Menu.Item>
+  ));
+
+  console.log(name, number);
+
+  const sidebarStyle = {
+    paddingTop: "20px",
+    paddingBottom: "20px",
+    position: "fixed",
+    height: `calc(100vh - (var(--headerHeight) + var(--footerHeight)))`,
+    width: "var(--sidebar-width)",
+    right: "0",
+    marginTop: "var(--headerHeight)",
+    backgroundColor: "var(--sidebar-color)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    rowGap: "20px",
+  };
 
   return (
-    <div className={s.sidebar}>
-      <Translate />
-      <Switch checked={theme === "dark"} onChange={handleThemeChange} />
-      <Menu defaultSelectedKeys={["1"]}>{render}</Menu>
-    </div>
+    <>
+      <Sider className={s.sidebar} style={sidebarStyle}>
+        <Menu defaultSelectedKeys={[number]}>{render}</Menu>
+        {name === "Crud CRM" && (
+          <Input
+            onChange={(e) => {
+              setPaginationState({ search: e.target.value, page: 1 });
+            }}
+            value={paginationState.search}
+            placeholder={t("Search by title")}
+            className={s.search}
+          />
+        )}
+      </Sider>
+    </>
   );
 };
 
