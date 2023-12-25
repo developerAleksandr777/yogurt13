@@ -24,6 +24,7 @@ button {
 }
 
 a{
+  text-decoration: none !important;
   color: white !important;
 }
 
@@ -100,4 +101,7 @@ a{
 }
 :where(.css-dev-only-do-not-override-p7e5j5).ant-radio-wrapper span.ant-radio+*{
   color: white;
+}
+.ant-btn.css-p7e5j5.ant-btn-primary {
+  width: 100%;
 }

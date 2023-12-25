@@ -160,14 +160,16 @@ const Crud = () => {
         <AntdHeader title="Abmin" />
         <Layout>
           <Content className={s.content}>
-            <RadioGroup
-              handleChange={(e) => handleChange(e.target.value)}
-              value={status}
-            />
+            <div className={s.wrapperInfo}>
+              <RadioGroup
+                handleChange={(e) => handleChange(e.target.value)}
+                value={status}
+              />
 
-            <Button type="primary" onClick={showModal}>
-              Create crud
-            </Button>
+              <Button type="primary" onClick={showModal}>
+                Create crud
+              </Button>
+            </div>
 
             <AntdModalCrud
               modalCrud={modalCrud}

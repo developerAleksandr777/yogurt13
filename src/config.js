@@ -1,12 +1,10 @@
-// export const API = "https://yogurt13-api.onrender.com";
+export const API = "https://yogurt13-api.onrender.com";
 
+// export const API = "http://localhost:5055";
 
- export const API = "http://localhost:5055";
-
-
-export const AUTH_API=API+"/auth/"
-export const CRUD_API=API+"/crud/"
-export const PROFILE_API=API+"/profile/"
+export const AUTH_API = API + "/auth/";
+export const CRUD_API = API + "/crud/";
+export const PROFILE_API = API + "/profile/";
 export const REGISTER_API = AUTH_API + "register";
 export const LOGIN_API = AUTH_API + "login";
 export const GET_PROFILE_API = PROFILE_API + "user";

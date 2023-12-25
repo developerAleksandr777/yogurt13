@@ -7,3 +7,10 @@
     margin-right: var(--sidebar-width);
     padding: 40px;
 }
+
+.wrapperInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}

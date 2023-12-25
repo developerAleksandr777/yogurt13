@@ -14,7 +14,7 @@ const AntdSidebar = ({ setPaginationState, paginationState }) => {
   const { t } = useTranslation();
   const menuItems = [
     { key: "1", icon: <ProfileOutlined />, link: "/", label: "Profile" },
-    { key: "2", icon: <PartitionOutlined />, link: "/crud", label: "Crud CRM" },
+    { key: "2", icon: <PartitionOutlined />, link: "/crud", label: "Admin" },
   ];
 
   const handleMenuClick = (item) => {

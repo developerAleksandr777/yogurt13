@@ -5,43 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8aad0f9b-84bf-4587-920c-edfcb29a7cc3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AntdFooter/AntdFooter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdFooter/AntdFooter.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdHeader/AntdHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdHeader/AntdHeader.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdModalCrud/AntdModalCrud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdModalCrud/AntdModalCrud.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AntdModalEditCrud/AntdModalEditCrud.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Tabs/AntdTabs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/AntdLayout/AntdLayout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntdAvatar/AntdAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntdAvatar/AntdAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntdAvatar/AntdAvatar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntdAvatar/AntdAvatar.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AntdSidebar/AntdSidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntdSidebar/AntdSidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AntdSidebar/AntdSidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AntdSidebar/AntdSidebar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormCreateCrud/FormCreateCrud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormCreateCrud/FormCreateCrud.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Item/Item.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Item/Item.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm/LoginForm..js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm..js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RadioGroup/RadioGroup.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RadioGroup/RadioGroup.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm/RegisterForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Crud/Crud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Crud/Crud.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Crud/Crud.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Crud/Crud.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Login/Login.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Login/Login.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Profile/Profile.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Profile/Profile.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Register/Register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Register/Register.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +71,7 @@
       <workItem from="1703330782730" duration="69000" />
       <workItem from="1703330926752" duration="12281000" />
       <workItem from="1703408931340" duration="28764000" />
+      <workItem from="1703504810462" duration="1324000" />
     </task>
     <servers />
   </component>
