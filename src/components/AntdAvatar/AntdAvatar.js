@@ -8,8 +8,6 @@ const AntdAvatar = ({ showModalSecond, size }) => {
   const { profile } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
-  console.log(profile);
-
   return (
     <Avatar
       className={s.ava}

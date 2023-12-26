@@ -5,7 +5,9 @@ const AntdFooter = () => {
   const { Footer } = Layout;
   return (
     <>
-      <Footer className={s.footer}>Footer</Footer>
+      <Footer className={s.footer}>
+        <p>------The best admin platform in the world------</p>
+      </Footer>
     </>
   );
 };

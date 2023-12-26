@@ -1,0 +1,15 @@
+.content{
+    margin-top:  var(--headerHeight);
+    margin-bottom: var(--footerHeight);
+    margin-right: var(--sidebar-width);
+    padding: 40px;
+}
+
+.content__wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}

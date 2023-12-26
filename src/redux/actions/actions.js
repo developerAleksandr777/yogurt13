@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { AUTH_TOKEN_ACTION, AUTH_ERRORS_ACTION } from "../slicers/authSlice";
+import {
+  AUTH_TOKEN_ACTION,
+  AUTH_ERRORS_ACTION,
+  ERRORS_ACTION,
+} from "../slicers/authSlice";
 import {
   REGISTER_API,
   LOGIN_API,
@@ -8,19 +12,18 @@ import {
   PROFILE_DELETE_API,
   GET_CRUD_API,
   CREATE_CRUD_API,
-  API,
   GET_PROFILE_API,
   CRUD_API,
+  CHART_CRUD_API,
 } from "../../config";
 import { GET_PROFILE_ACTION } from "../slicers/profileSlice";
-import { CREATE_CRUD_ACTION, GET_CRUD_ACTION } from "../slicers/crudSlice";
+import { CHART_CRUD_ACTION, CREATE_CRUD_ACTION, GET_CRUD_ACTION } from "../slicers/crudSlice";
 
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
   async (userData, { rejectWithValue, dispatch, getState }) => {
     try {
       const response = await axios.post(REGISTER_API, userData);
-      console.log(response.data);
       if (response.data.token) {
         dispatch(AUTH_TOKEN_ACTION(response.data.token));
       }
@@ -34,7 +37,6 @@ export const REGISTER_ASYNC = createAsyncThunk(
         }
         return acc;
       }, {});
-      console.log(allErrors);
       dispatch(AUTH_ERRORS_ACTION(allErrors));
       return rejectWithValue(error.message);
     }
@@ -46,11 +48,11 @@ export const LOGIN_ASYNC = createAsyncThunk(
   async (userData, { rejectWithValue, dispatch, getState }) => {
     try {
       const response = await axios.post(LOGIN_API, userData);
-      console.log(response.data);
       if (response.data.token) {
         dispatch(AUTH_TOKEN_ACTION(response.data.token));
       }
     } catch (error) {
+      console.log(error.response.data.message);
       const responseErrors = error.response.data.errors;
 
       const allErrors = responseErrors.reduce((acc, rec) => {
@@ -61,6 +63,8 @@ export const LOGIN_ASYNC = createAsyncThunk(
         }
         return acc;
       }, {});
+      dispatch(ERRORS_ACTION(error.response.data.message));
+
       dispatch(AUTH_ERRORS_ACTION(allErrors));
       return rejectWithValue(error.message);
     }
@@ -88,7 +92,6 @@ export const PROFILE_EDIT_ASYNC = createAsyncThunk(
   "profile/PROFILE_EDIT_ASYNC",
   async (userData, { rejectWithValue, dispatch, getState }) => {
     console.log(userData);
-
     try {
       const { auth } = getState().auth;
       const response = await axios.patch(PROFILE_EDIT_API, userData, {
@@ -152,7 +155,6 @@ export const CRUD_ASYNC = createAsyncThunk(
         },
       );
 
-      console.log(response.data.products);
       dispatch(GET_CRUD_ACTION(response.data.products));
     } catch (e) {
       return rejectWithValue(e.message);
@@ -241,18 +243,43 @@ export const DELETE_CRUD_ASYNC = createAsyncThunk(
 
 export const IMAGE_CRUD_ASYNC = createAsyncThunk(
   "crud/IMAGE_CRUD_ASYNC",
-  async (id, { rejectWithValue, dispatch, getState }) => {
+  async (obj, { rejectWithValue, dispatch, getState }) => {
     try {
       const { auth } = getState().auth;
 
-      const res = await axios.patch(CRUD_API + `${id}/image`, {
-        headers: {
-          Authorization: `Bearer ${auth}`,
+      const res = await axios.patch(
+        CRUD_API + `${obj.product._id}/image`,
+        obj.formData,
+        {
+          headers: {
+            Authorization: `Bearer ${auth}`,
+          },
         },
-      });
+      );
       return res.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }
   },
 );
+
+
+export const CHART_CRUD_ASYNC =createAsyncThunk(
+  "crud/CHART_CRUD_ASYNC",
+  async (_, { rejectWithValue, dispatch, getState }) => {
+    try {
+      const { auth } = getState().auth;
+
+      const res = await axios.get(
+        CHART_CRUD_API,
+        {
+          headers: {
+            Authorization: `Bearer ${auth}`,
+          },
+        },
+      );
+      dispatch(CHART_CRUD_ACTION(res.data))
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  })

@@ -9,9 +9,12 @@ const RadioGroup = ({ handleChange, value }) => {
     <RadioButton value={el} key={index} />
   ));
   return (
-    <Radio.Group onChange={handleChange} value={value} className={s.group}>
-      {renderRadioButton}
-    </Radio.Group>
+    <div className={s.filter}>
+      <p>Filter by completed:</p>
+      <Radio.Group onChange={handleChange} value={value} className={s.group}>
+        {renderRadioButton}
+      </Radio.Group>
+    </div>
   );
 };
 

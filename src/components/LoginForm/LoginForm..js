@@ -2,13 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Input, Button, notification, Switch } from "antd";
-import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
 import { LOGIN_ASYNC } from "../../redux/actions/actions";
-import { Link } from "react-router-dom";
 import Translate from "../Translate/Translate";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "../../custom hook/useTheme";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -23,20 +21,16 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
-  const { theme, setTheme } = useTheme();
-
-  const handleThemeChange = (checked) => {
-    const newTheme = checked ? "dark" : "light";
-    setTheme(newTheme);
-  };
+  const { errors } = useSelector((state) => state.auth);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, { setErrors }) => {
     dispatch(LOGIN_ASYNC(values));
+    setErrors(errors);
     notification.success({
-      message: t("Login Successful"),
-      description: t("You have successfully logined!"),
+      message: errors === {} && t("Login Successful"),
+      description: errors === {} && t("You have successfully logined!"),
       duration: 2,
     });
   };

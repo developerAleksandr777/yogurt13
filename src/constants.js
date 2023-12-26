@@ -1,5 +1,4 @@
-import AntdButton from "./components/AntdButton/AntdButton";
-import { Button, Input } from "antd";
+import { Button } from "antd";
 import React from "react";
 
 export const EDIT_PROFILE_INPUTS_CONST = [
@@ -17,7 +16,7 @@ export const EDIT_PROFILE_INPUTS_CONST = [
   },
 ];
 
-export const radioButton = ["true", "false", "reset"];
+export const radioButton = ["yes", "no", "reset"];
 
 export const generateColumns = (handleId, value) => {
   const { t } = value;
@@ -41,37 +40,17 @@ export const generateColumns = (handleId, value) => {
       dataIndex: "createdAt",
     },
     {
-      title: "Status",
+      title: "Completed",
       dataIndex: "status",
-      render: (status) => (status ? t("true") : t("false")),
+      render: (status) => (status ? t("yes") : t("no")),
     },
     {
-      title: "ID",
-      dataIndex: "_id",
-    },
-    {
-      title: "Buttons",
+      title: "Edit",
       render: (_id) => (
         <>
-          <Button onClick={() => handleId(_id)}>Edit crud</Button>
-          {/*<AntdButton*/}
-          {/*  func={() => {*/}
-          {/*    editTodoFunc(_id);*/}
-          {/*  }}*/}
-          {/*  htmlType="text"*/}
-          {/*  text={t("Edit")}*/}
-          {/*/>*/}
-          {/*<AntdButton*/}
-          {/*  func={() => deleteTodoFunc(_id)}*/}
-          {/*  htmlType="text"*/}
-          {/*  text={t("Delete")}*/}
-          {/*/>*/}
-          {/*<AntdButton*/}
-          {/*  func={() => doneTodoFunc(_id)}*/}
-          {/*  htmlType="text"*/}
-          {/*  text={t("Done")}*/}
-          {/*/>*/}
-          {/*<Input type="file" id="fileInput" onChange={imageTodoFunc} />*/}
+          <Button type="primary" onClick={() => handleId(_id)}>
+            Edit crud
+          </Button>
         </>
       ),
     },

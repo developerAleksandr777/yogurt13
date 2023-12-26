@@ -10,7 +10,11 @@ const AntdHeader = ({ title }) => {
       <Header className={s.header}>
         <AntdAvatar size={50} />
         {title}
-        <AntdAvatar size={50} />
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/8030/8030198.png"
+          alt=""
+          className={s.logo}
+        />{" "}
       </Header>
     </>
   );

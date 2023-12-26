@@ -29,23 +29,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
-  const { theme, setTheme } = useTheme();
-
-  const handleThemeChange = (checked) => {
-    const newTheme = checked ? "dark" : "light";
-    setTheme(newTheme);
-  };
   const { t } = useTranslation();
   const { errors } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  console.log(errors);
   const handleSubmit = (values, { setErrors }) => {
     dispatch(REGISTER_ASYNC(values));
-    console.log(values);
     setErrors(errors);
     notification.success({
-      message: t("Registration Successful"),
-      description: t("You have successfully registered!"),
+      message: errors === {} && t("Registration Successful"),
+      description: errors === {} && t("You have successfully registered!"),
       duration: 2,
     });
   };

@@ -9,3 +9,7 @@
 .modal__wrapper input {
     width: 472px;
 }
+
+.error{
+    color: red;
+}

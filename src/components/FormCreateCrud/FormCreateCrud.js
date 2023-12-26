@@ -28,7 +28,6 @@ const FormCreateCrud = ({
 
   return (
     <div className={s.formDiv}>
-      <p>{t("Create CRUD")}</p>
       <form onSubmit={handleSubmit}>
         {render}
         <Input type="file" id="fileInput" onChange={handleFileChange} />

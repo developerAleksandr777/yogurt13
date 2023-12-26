@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Flex, Input, Layout, Modal, Table } from "antd";
+import { Button, Flex, Layout, Table } from "antd";
 import { usePageState } from "../../custom hook/usePageState";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -8,15 +8,12 @@ import {
   DONE_CRUD_ASYNC,
   EDIT_CRUD_ASYNC,
   CREATE_CRUD_ASYNC,
-  IMAGE_CRUD_ASYNC,
 } from "../../redux/actions/actions";
 import { generateColumns } from "../../constants";
-import FormCreateCrud from "../../components/FormCreateCrud/FormCreateCrud";
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import s from "./Crud.module.css";
 import { useTranslation } from "react-i18next";
 import AntdAlert from "../../components/AntdAlert/AntdAlert";
-import CreateCrudHocWrapper from "../../hoc/CreateCrudHocWrapper";
 import AntdModalCrud from "../../components/AntdModalCrud/AntdModalCrud";
 import AntdModalEditCrud from "../../components/AntdModalEditCrud/AntdModalEditCrud";
 import AntdHeader from "../../components/AntdHeader/AntdHeader";
@@ -46,7 +43,7 @@ const Crud = () => {
       CRUD_ASYNC({
         search,
         status,
-      }),
+      })
     );
   }, [dispatch, search, status, refresh]);
 
@@ -145,7 +142,6 @@ const Crud = () => {
   };
 
   const handleId = (crud) => {
-    console.log(crud.userId);
     setProduct(crud);
     setEditModalCrud(true);
   };
@@ -187,13 +183,15 @@ const Crud = () => {
               editCrudFunc={editCrudFunc}
               deleteCrudFunc={deleteCrudFunc}
               doneCrudFunc={doneCrudFunc}
+              product={product}
+              setEditModalCrud={setEditModalCrud}
             />
 
             <Table
               key={refresh}
               dataSource={crud}
               columns={generateColumns(handleId, { t })}
-              rowKey="id"
+              rowKey="_id"
               pagination={
                 crud.length >= pageSize
                   ? {
@@ -207,10 +205,12 @@ const Crud = () => {
                       showTotal: (total, range) =>
                         `${range[0]}-${range[1]} из ${total} записей`,
                     }
-                  : false // Отключение пагинации, если данных недостаточно
+                  : false
               }
               scroll={{ y: 400 }}
+              style={{ maxHeight: "100px" }}
             />
+
             {alertMessage && <AntdAlert message={alertMessage} />}
           </Content>
 

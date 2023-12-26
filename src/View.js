@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Layout from "./Layout/Layout";
 import AntdLayout from "./containers/AntdLayout/AntdLayout";
+import ChartPage from "./containers/ChartPage/ChartPage";
 
 const View = () => {
   const { auth } = useSelector((state) => state.auth);
@@ -15,6 +16,7 @@ const View = () => {
       <Route path="/" element={auth ? <Layout /> : <Navigate to="/login" />}>
         <Route index element={<Profile />} />
         <Route path="/crud" element={<Crud />} />
+        <Route path="/chart" element={<ChartPage />} />
         <Route path="/layout" element={<AntdLayout />} />
       </Route>
       <Route path="/login" element={auth ? <Navigate to="/" /> : <Login />} />

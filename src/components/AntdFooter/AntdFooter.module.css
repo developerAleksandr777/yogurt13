@@ -6,4 +6,12 @@
     height: var(--footerHeight);
     bottom: 0;
     z-index: 2;
+    border-top: 2px solid black;
+}
+
+.footer p {
+    letter-spacing: 2px;
+    color: whitesmoke;
+    font-weight: bold;
+    text-decoration: line-through;
 }

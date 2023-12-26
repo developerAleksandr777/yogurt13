@@ -48,5 +48,7 @@
   "Edit your avatar": "Изменить Ваш аватар",
   "Edit your name": "Изменить Ваше имя пользователя",
   "Edit your email": "Изменить Вашу электронную почту",
-  "Edit your newPassword": "Изменить Ваш пароль"
+  "Edit your newPassword": "Изменить Ваш пароль",
+  "yes": "Да",
+  "no": "Нет"
 }

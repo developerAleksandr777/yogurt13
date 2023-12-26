@@ -3,10 +3,12 @@ import s from "./Login.module.css";
 import LoginForm from "../../components/LoginForm/LoginForm.";
 import AntdTabs from "../../components/Tabs/AntdTabs";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [loginType, setLoginType] = useState("login");
-
+  const { authErr } = useSelector((state) => state.auth);
+  console.log(authErr);
   return (
     <div id={s.login} className={s.loginContainer}>
       <div className={s.videoContainer}>
@@ -28,12 +30,13 @@ const Login = () => {
           <img
             src="https://cdn-icons-png.flaticon.com/128/8030/8030198.png"
             alt=""
-          />{" "}
+          />
         </div>
         <div className={s.underHeader}>
           <p>------The best admin platform in the world------</p>
         </div>
         <AntdTabs loginType={loginType} setLoginType={setLoginType} />
+        {authErr && <p>{authErr}</p>}
         {loginType === "login" && <LoginForm />}
         {loginType === "register" && <RegisterForm />}
       </div>

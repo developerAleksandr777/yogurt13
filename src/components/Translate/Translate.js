@@ -21,7 +21,6 @@ const Translate = () => {
     }
 
     setSelectedLanguage(newSelectedLanguage);
-    console.log(newSelectedLanguage.code);
 
     if (i18n && typeof i18n.changeLanguage === "function") {
       i18n.changeLanguage(newSelectedLanguage.code);
