@@ -105,3 +105,11 @@ a{
 .ant-btn.css-p7e5j5.ant-btn-primary {
   width: 100%;
 }
+
+:where(.css-p7e5j5).ant-menu-light, :where(.css-p7e5j5).ant-menu-light>.ant-menu,
+:where(.css-p7e5j5).ant-radio-wrapper span.ant-radio+*{
+  background-color: var(--sidebar-color);
+}
+ .ant-btn.css-p7e5j5.ant-btn-primary{
+  width: 15%;
+ }

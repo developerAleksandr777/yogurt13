@@ -208,7 +208,7 @@ const Crud = () => {
                   : false
               }
               scroll={{ y: 400 }}
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: "100px", height: "100px" }}
             />
 
             {alertMessage && <AntdAlert message={alertMessage} />}
